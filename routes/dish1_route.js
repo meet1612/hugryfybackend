@@ -18,8 +18,9 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-router.post("/", function(req, res, next) {
-  dish1.addDish(req.body, function(err, rows) {
+router.post("/",upload.single('dish_img'),function(req, res, next) {
+  dish1.addDish(req.body,req.file.filename,function(err, rows) {
+    console.log(req.body);
     if (err) {
       res.json(err);
     } else {
