@@ -18,7 +18,6 @@ var dish={
         },
 
     addDish:function(item,filename,callback){
-        console.log(item);
         return db.query("insert into dish_tbl (dish_name,dish_price,dish_img,fk_cusines_id) values (?,?,?,?)",[item.dish_name,item.dish_price,filename,item.fk_cusines_id],callback);
     },
     updateDish:function(id,item,callback){

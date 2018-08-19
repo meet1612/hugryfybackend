@@ -7,12 +7,12 @@ var cusin={
         return db.query("insert into cusines_tbl (cusines_name) values (?)",[item.cusines_name],callback);
     },
     deleteAllCusine:function(item,callback){
- 
         var delarr=[];
         for(i=0;i<item.length;i++){
          
         delarr[i]=item[i].cusines_id;
         }
+        db.query("delete from dish_tbl where fk_cusines_id in (?)",[delarr]);
         return db.query("delete from cusines_tbl where cusines_id in (?)",[delarr],callback);
         },
     updateCusine:function(id,item,callback){
